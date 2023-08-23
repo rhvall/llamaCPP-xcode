@@ -1,10 +1,3 @@
-//
-//  main.cpp
-//  llmBridge
-//
-//  Created by RH VT on 22/08/23.
-//
-
 // Defines sigaction on msys:
 #ifndef _GNU_SOURCE
 #define _GNU_SOURCE
@@ -13,7 +6,7 @@
 #include "common.h"
 #include "console.h"
 #include "llama.h"
-//#include "build-info.h"
+#include "build-info.h"
 #include "grammar-parser.h"
 
 #include <cassert>
@@ -105,7 +98,7 @@ int main(int argc, char ** argv) {
         params.n_ctx = 8;
     }
 
-//    fprintf(stderr, "%s: build = %d (%s)\n", __func__, BUILD_NUMBER, BUILD_COMMIT);
+    fprintf(stderr, "%s: build = %d (%s)\n", __func__, BUILD_NUMBER, BUILD_COMMIT);
 
     if (params.seed == LLAMA_DEFAULT_SEED) {
         params.seed = time(NULL);
