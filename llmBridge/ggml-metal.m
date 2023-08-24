@@ -106,18 +106,16 @@ static NSString * const msl_library_source = @"see metal.metal";
 @implementation GGMLMetalClass
 @end
 
-struct ggml_metal_context * ggml_metal_init(int n_cb) {
-    fprintf(stderr, "%s: allocating\n", __func__);
-
-    struct ggml_metal_context * ctx = malloc(sizeof(struct ggml_metal_context));
+struct ggml_metal_context *ggml_metal_load_source(int n_cb)
+{
+    struct ggml_metal_context *ctx = malloc(sizeof(struct ggml_metal_context));
 
     ctx->n_cb   = n_cb;
     ctx->device = MTLCreateSystemDefaultDevice();
     ctx->queue  = [ctx->device newCommandQueue];
     ctx->n_buffers = 0;
     ctx->concur_list_len = 0;
-
-
+    
 #if 0
     // compile from source string and show compile log
     {
@@ -144,6 +142,7 @@ struct ggml_metal_context * ggml_metal_init(int n_cb) {
         NSString * src  = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
         if (error) {
             fprintf(stderr, "%s: error: %s\n", __func__, [[error description] UTF8String]);
+            ggml_metal_free(ctx);
             return NULL;
         }
 
@@ -156,10 +155,60 @@ struct ggml_metal_context * ggml_metal_init(int n_cb) {
 #endif
         if (error) {
             fprintf(stderr, "%s: error: %s\n", __func__, [[error description] UTF8String]);
+            ggml_metal_free(ctx);
             return NULL;
         }
     }
 #endif
+    
+    return ctx;
+}
+
+struct ggml_metal_context *ggml_metal_load_compiled(int n_cb)
+{
+    NSError * error = nil;
+    NSBundle * bundle = [NSBundle bundleForClass:[GGMLMetalClass class]];
+    NSString * path = [bundle pathForResource:@"default" ofType:@"metallib"];
+    if ([path length] == 0 || [path isEqualToString:@"Empty"])
+    {
+        return NULL;
+    }
+        
+    struct ggml_metal_context *ctx = malloc(sizeof(struct ggml_metal_context));
+
+    ctx->n_cb   = n_cb;
+    ctx->device = MTLCreateSystemDefaultDevice();
+    ctx->queue  = [ctx->device newCommandQueue];
+    ctx->n_buffers = 0;
+    ctx->concur_list_len = 0;
+    
+    ctx->library = [ctx->device newLibraryWithFile:path error:&error];
+    
+    if (error)
+    {
+        fprintf(stderr, "%s: error: %s\n", __func__, [[error description] UTF8String]);
+        ggml_metal_free(ctx);
+        return NULL;
+    }
+    
+    return ctx;
+}
+
+struct ggml_metal_context * ggml_metal_init(int n_cb) {
+    fprintf(stderr, "%s: allocating\n", __func__);
+
+    struct ggml_metal_context * ctx = ggml_metal_load_source(n_cb);
+    
+    if (ctx == NULL)
+    {
+        ctx = ggml_metal_load_compiled(n_cb);
+    }
+    
+    if (ctx == NULL)
+    {
+        fprintf(stderr, "%s - Could not load metal library\n", __func__);
+        return NULL;
+    }
 
     // load kernels
     {
