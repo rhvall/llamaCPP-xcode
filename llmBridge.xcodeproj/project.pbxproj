@@ -20,6 +20,27 @@
 		2C4C3B502A94B24C006DAC8B /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4C3B4F2A94B24C006DAC8B /* Metal.framework */; };
 		2C4C3B522A94B342006DAC8B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4C3B512A94B342006DAC8B /* Foundation.framework */; };
 		2C4C3B542A94B359006DAC8B /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4C3B532A94B359006DAC8B /* MetalKit.framework */; };
+		2C6C7B4B2A9F49F90013B5D9 /* llmBridgeFW.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C6C7B4A2A9F49F90013B5D9 /* llmBridgeFW.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C6C7B512A9F4AAA0013B5D9 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6C7B4F2A9F4AAA0013B5D9 /* Metal.framework */; };
+		2C6C7B522A9F4AAA0013B5D9 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6C7B502A9F4AAA0013B5D9 /* MetalKit.framework */; };
+		2C6C7B542A9F4AB10013B5D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6C7B532A9F4AB10013B5D9 /* Foundation.framework */; };
+		2C6C7B562A9F4F420013B5D9 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B462A94B1DF006DAC8B /* common.cpp */; };
+		2C6C7B582A9F4F420013B5D9 /* console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B482A94B1DF006DAC8B /* console.cpp */; };
+		2C6C7B592A9F4F420013B5D9 /* grammar-parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B492A94B1DF006DAC8B /* grammar-parser.cpp */; };
+		2C6C7B5B2A9F4F420013B5D9 /* ggml-alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B352A94B1CE006DAC8B /* ggml-alloc.c */; };
+		2C6C7B5E2A9F4F420013B5D9 /* ggml-metal.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B3D2A94B1CE006DAC8B /* ggml-metal.m */; };
+		2C6C7B5F2A9F4F420013B5D9 /* ggml-metal.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B3C2A94B1CE006DAC8B /* ggml-metal.metal */; };
+		2C6C7B602A9F4F420013B5D9 /* ggml.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B372A94B1CE006DAC8B /* ggml.c */; };
+		2C6C7B622A9F4F420013B5D9 /* k_quants.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B382A94B1CE006DAC8B /* k_quants.c */; };
+		2C6C7B642A9F4F420013B5D9 /* llama.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B392A94B1CE006DAC8B /* llama.cpp */; };
+		2C6C7B662A9F4F760013B5D9 /* console.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4C3B452A94B1DF006DAC8B /* console.h */; };
+		2C6C7B672A9F4F760013B5D9 /* grammar-parser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4C3B472A94B1DF006DAC8B /* grammar-parser.h */; };
+		2C6C7B682A9F4F760013B5D9 /* common.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4C3B4A2A94B1DF006DAC8B /* common.h */; };
+		2C6C7B692A9F4F760013B5D9 /* ggml-alloc.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4C3B342A94B1CE006DAC8B /* ggml-alloc.h */; };
+		2C6C7B6A2A9F4F760013B5D9 /* ggml-metal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4C3B362A94B1CE006DAC8B /* ggml-metal.h */; };
+		2C6C7B6B2A9F4F760013B5D9 /* ggml.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4C3B3A2A94B1CE006DAC8B /* ggml.h */; };
+		2C6C7B6C2A9F4F760013B5D9 /* k_quants.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4C3B332A94B1CE006DAC8B /* k_quants.h */; };
+		2C6C7B6D2A9F4F760013B5D9 /* llama.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4C3B3B2A94B1CE006DAC8B /* llama.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +78,11 @@
 		2C4C3B4F2A94B24C006DAC8B /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		2C4C3B512A94B342006DAC8B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2C4C3B532A94B359006DAC8B /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		2C6C7B482A9F49F90013B5D9 /* llmBridgeFW.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = llmBridgeFW.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C6C7B4A2A9F49F90013B5D9 /* llmBridgeFW.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = llmBridgeFW.h; sourceTree = "<group>"; };
+		2C6C7B4F2A9F4AAA0013B5D9 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.2.sdk/System/Library/Frameworks/Metal.framework; sourceTree = DEVELOPER_DIR; };
+		2C6C7B502A9F4AAA0013B5D9 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.2.sdk/System/Library/Frameworks/MetalKit.framework; sourceTree = DEVELOPER_DIR; };
+		2C6C7B532A9F4AB10013B5D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +96,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2C6C7B452A9F49F90013B5D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C6C7B542A9F4AB10013B5D9 /* Foundation.framework in Frameworks */,
+				2C6C7B512A9F4AAA0013B5D9 /* Metal.framework in Frameworks */,
+				2C6C7B522A9F4AAA0013B5D9 /* MetalKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -77,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				2C4C3B2B2A94ADF6006DAC8B /* llmBridge */,
+				2C6C7B492A9F49F90013B5D9 /* llmBridgeFW */,
 				2C4C3B2A2A94ADF6006DAC8B /* Products */,
 				2C4C3B4E2A94B24C006DAC8B /* Frameworks */,
 			);
@@ -86,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				2C4C3B292A94ADF6006DAC8B /* llmBridge */,
+				2C6C7B482A9F49F90013B5D9 /* llmBridgeFW.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,14 +164,44 @@
 		2C4C3B4E2A94B24C006DAC8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2C6C7B532A9F4AB10013B5D9 /* Foundation.framework */,
 				2C4C3B532A94B359006DAC8B /* MetalKit.framework */,
+				2C6C7B4F2A9F4AAA0013B5D9 /* Metal.framework */,
+				2C6C7B502A9F4AAA0013B5D9 /* MetalKit.framework */,
 				2C4C3B512A94B342006DAC8B /* Foundation.framework */,
 				2C4C3B4F2A94B24C006DAC8B /* Metal.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2C6C7B492A9F49F90013B5D9 /* llmBridgeFW */ = {
+			isa = PBXGroup;
+			children = (
+				2C6C7B4A2A9F49F90013B5D9 /* llmBridgeFW.h */,
+			);
+			path = llmBridgeFW;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2C6C7B432A9F49F90013B5D9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C6C7B4B2A9F49F90013B5D9 /* llmBridgeFW.h in Headers */,
+				2C6C7B662A9F4F760013B5D9 /* console.h in Headers */,
+				2C6C7B672A9F4F760013B5D9 /* grammar-parser.h in Headers */,
+				2C6C7B682A9F4F760013B5D9 /* common.h in Headers */,
+				2C6C7B692A9F4F760013B5D9 /* ggml-alloc.h in Headers */,
+				2C6C7B6A2A9F4F760013B5D9 /* ggml-metal.h in Headers */,
+				2C6C7B6B2A9F4F760013B5D9 /* ggml.h in Headers */,
+				2C6C7B6C2A9F4F760013B5D9 /* k_quants.h in Headers */,
+				2C6C7B6D2A9F4F760013B5D9 /* llama.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		2C4C3B282A94ADF6006DAC8B /* llmBridge */ = {
@@ -153,6 +221,24 @@
 			productReference = 2C4C3B292A94ADF6006DAC8B /* llmBridge */;
 			productType = "com.apple.product-type.tool";
 		};
+		2C6C7B472A9F49F90013B5D9 /* llmBridgeFW */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C6C7B4E2A9F49F90013B5D9 /* Build configuration list for PBXNativeTarget "llmBridgeFW" */;
+			buildPhases = (
+				2C6C7B432A9F49F90013B5D9 /* Headers */,
+				2C6C7B442A9F49F90013B5D9 /* Sources */,
+				2C6C7B452A9F49F90013B5D9 /* Frameworks */,
+				2C6C7B462A9F49F90013B5D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = llmBridgeFW;
+			productName = llmBridgeFW;
+			productReference = 2C6C7B482A9F49F90013B5D9 /* llmBridgeFW.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -163,6 +249,9 @@
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					2C4C3B282A94ADF6006DAC8B = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					2C6C7B472A9F49F90013B5D9 = {
 						CreatedOnToolsVersion = 14.2;
 					};
 				};
@@ -181,9 +270,20 @@
 			projectRoot = "";
 			targets = (
 				2C4C3B282A94ADF6006DAC8B /* llmBridge */,
+				2C6C7B472A9F49F90013B5D9 /* llmBridgeFW */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2C6C7B462A9F49F90013B5D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2C4C3B252A94ADF6006DAC8B /* Sources */ = {
@@ -200,6 +300,22 @@
 				2C4C3B402A94B1CE006DAC8B /* k_quants.c in Sources */,
 				2C4C3B2D2A94ADF6006DAC8B /* main.cpp in Sources */,
 				2C4C3B3F2A94B1CE006DAC8B /* ggml.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C6C7B442A9F49F90013B5D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C6C7B562A9F4F420013B5D9 /* common.cpp in Sources */,
+				2C6C7B582A9F4F420013B5D9 /* console.cpp in Sources */,
+				2C6C7B592A9F4F420013B5D9 /* grammar-parser.cpp in Sources */,
+				2C6C7B5B2A9F4F420013B5D9 /* ggml-alloc.c in Sources */,
+				2C6C7B5E2A9F4F420013B5D9 /* ggml-metal.m in Sources */,
+				2C6C7B5F2A9F4F420013B5D9 /* ggml-metal.metal in Sources */,
+				2C6C7B602A9F4F420013B5D9 /* ggml.c in Sources */,
+				2C6C7B622A9F4F420013B5D9 /* k_quants.c in Sources */,
+				2C6C7B642A9F4F420013B5D9 /* llama.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +465,100 @@
 			};
 			name = Release;
 		};
+		2C6C7B4C2A9F49F90013B5D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					GGML_METAL_NDEBUG,
+					GGML_USE_METAL,
+					GGML_USE_K_QUANTS,
+					GGML_USE_ACCELERATE,
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.6;
+				MARKETING_VERSION = 1.0;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DLLAMA_METAL",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.quantaliz.llmBridgeFW;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2C6C7B4D2A9F49F90013B5D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.6;
+				MARKETING_VERSION = 1.0;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DLLAMA_METAL",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.quantaliz.llmBridgeFW;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -366,6 +576,15 @@
 			buildConfigurations = (
 				2C4C3B312A94ADF6006DAC8B /* Debug */,
 				2C4C3B322A94ADF6006DAC8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C6C7B4E2A9F49F90013B5D9 /* Build configuration list for PBXNativeTarget "llmBridgeFW" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C6C7B4C2A9F49F90013B5D9 /* Debug */,
+				2C6C7B4D2A9F49F90013B5D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
