@@ -1,5 +1,5 @@
 //
-//  llmBridgeFW.h
+//  LLMBridge.h
 //  QuBot
 //
 //  Created by R on 30/08/23.

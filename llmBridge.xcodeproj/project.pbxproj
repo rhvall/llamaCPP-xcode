@@ -507,7 +507,6 @@
 					"-DGGML_SWIFT",
 					"-DGGML_USE_METAL",
 				);
-				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quantaliz.llmBridgeFW;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = auto;
@@ -555,7 +554,6 @@
 					"-DGGML_SWIFT",
 					"-DGGML_USE_METAL",
 				);
-				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quantaliz.llmBridgeFW;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = auto;
