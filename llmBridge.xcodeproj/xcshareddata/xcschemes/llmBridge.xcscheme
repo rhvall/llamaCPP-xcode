@@ -53,7 +53,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-m $(SRCROOT)/../../models/llama-2-7b-chat-ggml/ggml-model-q4_0.bin"
+            argument = "-m $(SRCROOT)/../models/ggml-model-q4_0.bin"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
@@ -81,7 +81,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-f $(SRCROOT)/../../llamaCPP/prompts/chat-with-bob.txt"
+            argument = "-f $(SRCROOT)/../llamaCPP/prompts/chat-with-bob.txt"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C4C3B2D2A94ADF6006DAC8B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B2C2A94ADF6006DAC8B /* main.cpp */; };
+		2C4C3B2D2A94ADF6006DAC8B /* llamaCPPMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B2C2A94ADF6006DAC8B /* llamaCPPMain.cpp */; };
 		2C4C3B3E2A94B1CE006DAC8B /* ggml-alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B352A94B1CE006DAC8B /* ggml-alloc.c */; };
 		2C4C3B3F2A94B1CE006DAC8B /* ggml.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B372A94B1CE006DAC8B /* ggml.c */; };
 		2C4C3B402A94B1CE006DAC8B /* k_quants.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B382A94B1CE006DAC8B /* k_quants.c */; };
@@ -20,7 +20,7 @@
 		2C4C3B502A94B24C006DAC8B /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4C3B4F2A94B24C006DAC8B /* Metal.framework */; };
 		2C4C3B522A94B342006DAC8B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4C3B512A94B342006DAC8B /* Foundation.framework */; };
 		2C4C3B542A94B359006DAC8B /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4C3B532A94B359006DAC8B /* MetalKit.framework */; };
-		2C6C7B4B2A9F49F90013B5D9 /* llmBridgeFW.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C6C7B4A2A9F49F90013B5D9 /* llmBridgeFW.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C6C7B4B2A9F49F90013B5D9 /* LLMBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C6C7B4A2A9F49F90013B5D9 /* LLMBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C6C7B512A9F4AAA0013B5D9 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6C7B4F2A9F4AAA0013B5D9 /* Metal.framework */; };
 		2C6C7B522A9F4AAA0013B5D9 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6C7B502A9F4AAA0013B5D9 /* MetalKit.framework */; };
 		2C6C7B542A9F4AB10013B5D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6C7B532A9F4AB10013B5D9 /* Foundation.framework */; };
@@ -57,7 +57,7 @@
 
 /* Begin PBXFileReference section */
 		2C4C3B292A94ADF6006DAC8B /* llmBridge */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = llmBridge; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C4C3B2C2A94ADF6006DAC8B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		2C4C3B2C2A94ADF6006DAC8B /* llamaCPPMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = llamaCPPMain.cpp; sourceTree = "<group>"; };
 		2C4C3B332A94B1CE006DAC8B /* k_quants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = k_quants.h; sourceTree = "<group>"; };
 		2C4C3B342A94B1CE006DAC8B /* ggml-alloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ggml-alloc.h"; sourceTree = "<group>"; };
 		2C4C3B352A94B1CE006DAC8B /* ggml-alloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "ggml-alloc.c"; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		2C4C3B512A94B342006DAC8B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2C4C3B532A94B359006DAC8B /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		2C6C7B482A9F49F90013B5D9 /* llmBridgeFW.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = llmBridgeFW.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C6C7B4A2A9F49F90013B5D9 /* llmBridgeFW.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = llmBridgeFW.h; sourceTree = "<group>"; };
+		2C6C7B4A2A9F49F90013B5D9 /* LLMBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLMBridge.h; sourceTree = "<group>"; };
 		2C6C7B4F2A9F4AAA0013B5D9 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.2.sdk/System/Library/Frameworks/Metal.framework; sourceTree = DEVELOPER_DIR; };
 		2C6C7B502A9F4AAA0013B5D9 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.2.sdk/System/Library/Frameworks/MetalKit.framework; sourceTree = DEVELOPER_DIR; };
 		2C6C7B532A9F4AB10013B5D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -132,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				2C4C3B442A94B1DF006DAC8B /* common */,
-				2C4C3B2C2A94ADF6006DAC8B /* main.cpp */,
+				2C4C3B2C2A94ADF6006DAC8B /* llamaCPPMain.cpp */,
 				2C4C3B352A94B1CE006DAC8B /* ggml-alloc.c */,
 				2C4C3B342A94B1CE006DAC8B /* ggml-alloc.h */,
 				2C4C3B362A94B1CE006DAC8B /* ggml-metal.h */,
@@ -177,7 +177,7 @@
 		2C6C7B492A9F49F90013B5D9 /* llmBridgeFW */ = {
 			isa = PBXGroup;
 			children = (
-				2C6C7B4A2A9F49F90013B5D9 /* llmBridgeFW.h */,
+				2C6C7B4A2A9F49F90013B5D9 /* LLMBridge.h */,
 			);
 			path = llmBridgeFW;
 			sourceTree = "<group>";
@@ -189,7 +189,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C6C7B4B2A9F49F90013B5D9 /* llmBridgeFW.h in Headers */,
+				2C6C7B4B2A9F49F90013B5D9 /* LLMBridge.h in Headers */,
 				2C6C7B662A9F4F760013B5D9 /* console.h in Headers */,
 				2C6C7B672A9F4F760013B5D9 /* grammar-parser.h in Headers */,
 				2C6C7B682A9F4F760013B5D9 /* common.h in Headers */,
@@ -298,7 +298,7 @@
 				2C4C3B432A94B1CE006DAC8B /* ggml-metal.m in Sources */,
 				2C4C3B4B2A94B1DF006DAC8B /* common.cpp in Sources */,
 				2C4C3B402A94B1CE006DAC8B /* k_quants.c in Sources */,
-				2C4C3B2D2A94ADF6006DAC8B /* main.cpp in Sources */,
+				2C4C3B2D2A94ADF6006DAC8B /* llamaCPPMain.cpp in Sources */,
 				2C4C3B3F2A94B1CE006DAC8B /* ggml.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

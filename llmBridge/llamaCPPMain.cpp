@@ -29,6 +29,8 @@
 #include <signal.h>
 #endif
 
+// ./llmBridge -m ggml-model-q4_0.bin -n 1024 -ngl 1 --repeat-penalty 1.0 --color -i -r "User:" -f prompts/chat-with-bob.txt
+
 #if defined(_MSC_VER)
 #pragma warning(disable: 4244 4267) // possible loss of data
 #endif
@@ -479,6 +481,8 @@ int main(int argc, char ** argv) {
 
     std::vector<llama_token_data> candidates;
     candidates.reserve(n_vocab);
+    
+//    for_each(embd_inp.begin(), embd_inp.end(), [ctx](auto r){ std::cout << llama_token_to_piece(ctx, r) << std::endl; });
 
     while ((n_remain != 0 && !is_antiprompt) || params.interactive) {
         // predict
@@ -493,7 +497,7 @@ int main(int argc, char ** argv) {
                 embd.resize(max_embd_size);
 
                 console::set_display(console::error);
-                printf("<<input too long: skipped %d token%s>>", skipped_tokens, skipped_tokens != 1 ? "s" : "");
+                printf("<<input too long: skipped %d token%s>>\n", skipped_tokens, skipped_tokens != 1 ? "s" : "");
                 console::set_display(console::reset);
                 fflush(stdout);
             }
@@ -509,16 +513,21 @@ int main(int argc, char ** argv) {
                 }
 
                 const int n_left = n_past - params.n_keep;
-                LOG("context full, swapping: n_past = %d, n_left = %d, n_ctx = %d, n_keep = %d\n", n_past, n_left, n_ctx, params.n_keep);
+                LOG_TEE("context full, swapping: n_past = %d, n_left = %d, n_ctx = %d, n_keep = %d\n", n_past, n_left, n_ctx, params.n_keep);
 
                 // always keep the first token - BOS
                 n_past          = std::max(1, params.n_keep);
                 n_past_guidance = std::max(1, params.n_keep + guidance_offset);
 
-                LOG("after swap: n_past = %d, n_past_guidance = %d\n", n_past, n_past_guidance);
+                LOG_TEE("after swap: n_past = %d, n_past_guidance = %d\n", n_past, n_past_guidance);
 
                 // insert n_left/2 tokens at the start of embd from last_tokens
+                
+                // for_each(embd.begin(), embd.end(), [ctx](auto r){ std::cout << llama_token_to_piece(ctx, r); });
+                // std::cout  << std::endl;
                 embd.insert(embd.begin(), last_tokens.begin() + n_ctx - n_left/2 - embd.size(), last_tokens.end() - embd.size());
+                // for_each(embd.begin(), embd.end(), [ctx](auto r){ std::cout << llama_token_to_piece(ctx, r); });
+                // std::cout  << std::endl;
 
                 LOG("embd: %s\n", LOG_TOKENS_TOSTR_PRETTY(ctx, embd));
 
@@ -592,11 +601,11 @@ int main(int argc, char ** argv) {
             for (int i = 0; i < (int) embd.size(); i += params.n_batch) {
                 int n_eval = (int) embd.size() - i;
                 if (n_eval > params.n_batch) {
-                    n_eval = params.n_batch;
+                    n_eval = params.n_batch - 1;
                 }
 
                 LOG("eval: %s\n", LOG_TOKENS_TOSTR_PRETTY(ctx, embd));
-
+//                for_each(embd.begin(), embd.end(), [ctx](auto r){ std::cout << llama_token_to_piece(ctx, r) << std::endl; });
                 if (llama_eval(ctx, &embd[i], n_eval, n_past, params.n_threads)) {
                     LOG_TEE("%s : failed to eval\n", __func__);
                     return 1;
@@ -626,7 +635,7 @@ int main(int argc, char ** argv) {
             }
 
             const llama_token id = llama_sample_token(ctx, ctx_guidance, grammar, params, last_tokens, candidates);
-
+//            for_each(last_tokens.begin(), last_tokens.end(), [ctx](auto r){ std::cout << llama_token_to_piece(ctx, r) << std::endl; });
             last_tokens.erase(last_tokens.begin());
             last_tokens.push_back(id);
 
@@ -756,6 +765,13 @@ int main(int argc, char ** argv) {
                     another_line = console::readline(line, params.multiline_input);
                     buffer += line;
                 } while (another_line);
+                
+                // bool staticOnce = false;
+                // if (staticOnce == false)
+                // {
+                //     buffer = "Describe in one sentence the following text: \"In 2014 Apple introduced Swift. It’s a multi-paradigm, compiled, statically and strongly-typed language. Swift has powerful and rich value types that support methods, implementing protocols(interfaces), extensions etc. Even though Apple recommended using value types since then, the milestones in the brief history of Swift were actually the following two sessions of WWDC 2015. In these sessions, Apple strongly advised using value types more often. Value semantics serve to eliminate mutation and remove unintended sharing of state and related side effects. By providing powerful value types, Swift aims to maximize value type usage to avoid possible errors related to sharing the state. Meantime value types provide better performance metrics than reference types. Therewithal it was Swift taking a pass at the functional programming community since the latter aims the same goals, even in today’s increasingly concurrent world. Functional programming also depends on the paradigm 'thinking in functional style'. In functional programming world, there is no country for shared state, mutating state and related side effects. That said it has its disadvantages as well, such as its inability to fit perfectly to machine model or its inefficiency in cases where the mutation is a good choice. This is a huge topic that goes beyond the scope of this article. So I will not go deeper into this heated debate and leave it here for now. Here is a quick refresher for value semantics and the features of value types presented in aforementioned WWDC sessions. No Shared State (Auto Copying) & Immutability. Mutating an instance will never affect another.Instances of value types are created in the stack and on each assignment or passing the value around (between functions or threads) there will be a unique instance(if compiler is not sure there will be no mutation, a new copy) and it will be passed. Therefore, you are guaranteed with no shared state. And it’s not possible to mutate an instance unintendedly. As you see on assignment our struct is automatically copied and this copy is mutated. So value types don’t have shared state, and they have an auto-copying feature. Swift’s collection types (Dictionary, Array, String, Set etc.) are value types that are backed by reference types. In these types copy-on-write performance optimization implemented by default in order to avoid mutation issues. Basically copy-on-write provides creating another instance only when the first instance is mutated. Otherwise, a single instance is shared among the variables. So collections are safe for mutability. Here is a quick refresher for value semantics and the features of value types presented in aforementioned WWDC sessions. No Shared State (Auto Copying) & Immutability Mutating an instance will never affect another. Instances of value types are created in the stack and on each assignment or passing the value around (between functions or threads) there will be a unique instance(if compiler is not sure there will be no mutation, a new copy) and it will be passed. Therefore, you are guaranteed with no shared state. And it’s not possible to mutate an instance unintendedly.\"";
+                //     staticOnce = true;
+                // }
 
                 // done taking input, reset color
                 console::set_display(console::reset);
@@ -835,6 +851,8 @@ int main(int argc, char ** argv) {
             n_remain = params.n_predict;
             is_interacting = true;
         }
+        
+//        printf("\nNPast: %i\n", n_past);
     }
 
     if (!path_session.empty() && params.prompt_cache_all && !params.prompt_cache_ro) {
