@@ -19,11 +19,8 @@
 		2C4BF3112B3925BA007F22EC /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF30E2B3925BA007F22EC /* common.cpp */; };
 		2C4BF3122B3925BA007F22EC /* common.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4BF30F2B3925BA007F22EC /* common.h */; };
 		2C4BF3172B3925E3007F22EC /* sampling.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4BF3132B3925E3007F22EC /* sampling.h */; };
-		2C4BF3182B3925E3007F22EC /* console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF3142B3925E3007F22EC /* console.cpp */; };
-		2C4BF3192B3925E3007F22EC /* console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF3142B3925E3007F22EC /* console.cpp */; };
 		2C4BF31A2B3925E3007F22EC /* sampling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF3152B3925E3007F22EC /* sampling.cpp */; };
 		2C4BF31B2B3925E3007F22EC /* sampling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF3152B3925E3007F22EC /* sampling.cpp */; };
-		2C4BF31C2B3925E3007F22EC /* console.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4BF3162B3925E3007F22EC /* console.h */; };
 		2C4BF31F2B392611007F22EC /* grammar-parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF31D2B392611007F22EC /* grammar-parser.cpp */; };
 		2C4BF3202B392611007F22EC /* grammar-parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF31D2B392611007F22EC /* grammar-parser.cpp */; };
 		2C4BF3212B392611007F22EC /* grammar-parser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4BF31E2B392611007F22EC /* grammar-parser.h */; };
@@ -40,6 +37,9 @@
 		2C4C3B502A94B24C006DAC8B /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4C3B4F2A94B24C006DAC8B /* Metal.framework */; };
 		2C4C3B522A94B342006DAC8B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4C3B512A94B342006DAC8B /* Foundation.framework */; };
 		2C4C3B542A94B359006DAC8B /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4C3B532A94B359006DAC8B /* MetalKit.framework */; };
+		2C5BCF532C00D19500A2C4DD /* console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BCF522C00D19500A2C4DD /* console.cpp */; };
+		2C5BCF572C00D21300A2C4DD /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BCF552C00D21300A2C4DD /* unicode.cpp */; };
+		2C5BCF582C00D21300A2C4DD /* unicode-data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BCF562C00D21300A2C4DD /* unicode-data.cpp */; };
 		2C6C7B4B2A9F49F90013B5D9 /* LLMBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C6C7B4A2A9F49F90013B5D9 /* LLMBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C6C7B512A9F4AAA0013B5D9 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6C7B4F2A9F4AAA0013B5D9 /* Metal.framework */; };
 		2C6C7B522A9F4AAA0013B5D9 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6C7B502A9F4AAA0013B5D9 /* MetalKit.framework */; };
@@ -77,9 +77,7 @@
 		2C4BF30E2B3925BA007F22EC /* common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = common.cpp; sourceTree = "<group>"; };
 		2C4BF30F2B3925BA007F22EC /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		2C4BF3132B3925E3007F22EC /* sampling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sampling.h; sourceTree = "<group>"; };
-		2C4BF3142B3925E3007F22EC /* console.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = console.cpp; sourceTree = "<group>"; };
 		2C4BF3152B3925E3007F22EC /* sampling.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sampling.cpp; sourceTree = "<group>"; };
-		2C4BF3162B3925E3007F22EC /* console.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = console.h; sourceTree = "<group>"; };
 		2C4BF31D2B392611007F22EC /* grammar-parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "grammar-parser.cpp"; sourceTree = "<group>"; };
 		2C4BF31E2B392611007F22EC /* grammar-parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "grammar-parser.h"; sourceTree = "<group>"; };
 		2C4BF3222B39262B007F22EC /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
@@ -99,6 +97,11 @@
 		2C4C3B4F2A94B24C006DAC8B /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		2C4C3B512A94B342006DAC8B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2C4C3B532A94B359006DAC8B /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		2C5BCF512C00D19500A2C4DD /* console.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = console.h; sourceTree = "<group>"; };
+		2C5BCF522C00D19500A2C4DD /* console.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = console.cpp; sourceTree = "<group>"; };
+		2C5BCF542C00D21300A2C4DD /* unicode-data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "unicode-data.h"; sourceTree = "<group>"; };
+		2C5BCF552C00D21300A2C4DD /* unicode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unicode.cpp; sourceTree = "<group>"; };
+		2C5BCF562C00D21300A2C4DD /* unicode-data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "unicode-data.cpp"; sourceTree = "<group>"; };
 		2C6C7B482A9F49F90013B5D9 /* llmBridgeFW.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = llmBridgeFW.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6C7B4A2A9F49F90013B5D9 /* LLMBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLMBridge.h; sourceTree = "<group>"; };
 		2C6C7B4F2A9F4AAA0013B5D9 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.2.sdk/System/Library/Frameworks/Metal.framework; sourceTree = DEVELOPER_DIR; };
@@ -133,13 +136,16 @@
 		2C4BF30D2B3925BA007F22EC /* common */ = {
 			isa = PBXGroup;
 			children = (
+				2C5BCF562C00D21300A2C4DD /* unicode-data.cpp */,
+				2C5BCF542C00D21300A2C4DD /* unicode-data.h */,
+				2C5BCF552C00D21300A2C4DD /* unicode.cpp */,
+				2C5BCF522C00D19500A2C4DD /* console.cpp */,
+				2C5BCF512C00D19500A2C4DD /* console.h */,
 				2C4BF3262B392D84007F22EC /* build-info.cpp */,
 				2C4BF3242B3926E3007F22EC /* unicode.h */,
 				2C4BF3222B39262B007F22EC /* log.h */,
 				2C4BF31D2B392611007F22EC /* grammar-parser.cpp */,
 				2C4BF31E2B392611007F22EC /* grammar-parser.h */,
-				2C4BF3142B3925E3007F22EC /* console.cpp */,
-				2C4BF3162B3925E3007F22EC /* console.h */,
 				2C4BF3152B3925E3007F22EC /* sampling.cpp */,
 				2C4BF3132B3925E3007F22EC /* sampling.h */,
 				2C4BF30E2B3925BA007F22EC /* common.cpp */,
@@ -227,7 +233,6 @@
 				2C6C7B6A2A9F4F760013B5D9 /* ggml-metal.h in Headers */,
 				2C6C7B6B2A9F4F760013B5D9 /* ggml.h in Headers */,
 				2C4BF3172B3925E3007F22EC /* sampling.h in Headers */,
-				2C4BF31C2B3925E3007F22EC /* console.h in Headers */,
 				2C4BF3252B3926E3007F22EC /* unicode.h in Headers */,
 				2C4BF30B2B39217D007F22EC /* ggml-backend-impl.h in Headers */,
 				2C6C7B6D2A9F4F760013B5D9 /* llama.h in Headers */,
@@ -327,12 +332,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C4BF3272B392D84007F22EC /* build-info.cpp in Sources */,
+				2C5BCF572C00D21300A2C4DD /* unicode.cpp in Sources */,
+				2C5BCF582C00D21300A2C4DD /* unicode-data.cpp in Sources */,
 				2C4BF3102B3925BA007F22EC /* common.cpp in Sources */,
-				2C4BF3182B3925E3007F22EC /* console.cpp in Sources */,
 				2C4C3B3E2A94B1CE006DAC8B /* ggml-alloc.c in Sources */,
 				2C4BF3052B39217D007F22EC /* ggml-backend.c in Sources */,
 				2C4C3B432A94B1CE006DAC8B /* ggml-metal.m in Sources */,
 				2C4C3B422A94B1CE006DAC8B /* ggml-metal.metal in Sources */,
+				2C5BCF532C00D19500A2C4DD /* console.cpp in Sources */,
 				2C4BF3082B39217D007F22EC /* ggml-quants.c in Sources */,
 				2C4C3B3F2A94B1CE006DAC8B /* ggml.c in Sources */,
 				2C4BF31F2B392611007F22EC /* grammar-parser.cpp in Sources */,
@@ -346,7 +353,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C4BF3192B3925E3007F22EC /* console.cpp in Sources */,
 				2C6C7B5B2A9F4F420013B5D9 /* ggml-alloc.c in Sources */,
 				2C4BF3202B392611007F22EC /* grammar-parser.cpp in Sources */,
 				2C4BF3062B39217D007F22EC /* ggml-backend.c in Sources */,

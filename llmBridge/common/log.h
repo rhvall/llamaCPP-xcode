@@ -401,8 +401,8 @@ inline FILE *log_handler1_impl(bool change = false, LogTriState append = LogTriS
         //  Verify whether the file was opened, otherwise fallback to stderr
         logfile = stderr;
 
-        fprintf(stderr, "Failed to open logfile '%s' with error '%s'\n", filename.c_str(), std::strerror(errno));
-        fflush(stderr);
+//        fprintf(stderr, "Failed to open logfile '%s' with error '%s'\n", filename.c_str(), std::strerror(errno));
+//        fflush(stderr);
 
         // At this point we let the init flag be to true below, and let the target fallback to stderr
         //  otherwise we would repeatedly fopen() which was already unsuccessful
@@ -691,6 +691,7 @@ inline std::string LOG_BATCH_TOSTR_PRETTY(const C & ctx, const B & batch)
 
     return buf.str();
 }
+#define LOG_DISABLE_LOGS
 
 #ifdef LOG_DISABLE_LOGS
 
