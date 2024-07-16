@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C15E9492C462C7D002A8ED8 /* ggml-aarch64.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C15E9482C462C7D002A8ED8 /* ggml-aarch64.c */; };
 		2C4BF3052B39217D007F22EC /* ggml-backend.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF2FF2B39217D007F22EC /* ggml-backend.c */; };
 		2C4BF3062B39217D007F22EC /* ggml-backend.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF2FF2B39217D007F22EC /* ggml-backend.c */; };
 		2C4BF3072B39217D007F22EC /* ggml-impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4BF3002B39217D007F22EC /* ggml-impl.h */; };
@@ -68,6 +69,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2C15E9472C462C7D002A8ED8 /* ggml-aarch64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ggml-aarch64.h"; sourceTree = "<group>"; };
+		2C15E9482C462C7D002A8ED8 /* ggml-aarch64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "ggml-aarch64.c"; sourceTree = "<group>"; };
 		2C4BF2FF2B39217D007F22EC /* ggml-backend.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "ggml-backend.c"; sourceTree = "<group>"; };
 		2C4BF3002B39217D007F22EC /* ggml-impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ggml-impl.h"; sourceTree = "<group>"; };
 		2C4BF3012B39217D007F22EC /* ggml-quants.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "ggml-quants.c"; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				2C4BF30D2B3925BA007F22EC /* common */,
+				2C15E9482C462C7D002A8ED8 /* ggml-aarch64.c */,
+				2C15E9472C462C7D002A8ED8 /* ggml-aarch64.h */,
 				2C4BF3032B39217D007F22EC /* ggml-backend-impl.h */,
 				2C4BF2FF2B39217D007F22EC /* ggml-backend.c */,
 				2C4BF3022B39217D007F22EC /* ggml-backend.h */,
@@ -343,6 +348,7 @@
 				2C4BF3082B39217D007F22EC /* ggml-quants.c in Sources */,
 				2C4C3B3F2A94B1CE006DAC8B /* ggml.c in Sources */,
 				2C4BF31F2B392611007F22EC /* grammar-parser.cpp in Sources */,
+				2C15E9492C462C7D002A8ED8 /* ggml-aarch64.c in Sources */,
 				2C4C3B412A94B1CE006DAC8B /* llama.cpp in Sources */,
 				2C4C3B2D2A94ADF6006DAC8B /* llamaCPPMain.cpp in Sources */,
 				2C4BF31A2B3925E3007F22EC /* sampling.cpp in Sources */,

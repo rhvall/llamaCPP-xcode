@@ -312,6 +312,12 @@
     GGML_TENSOR_LOCALS(int64_t, ne,  dst,  ne) \
     GGML_TENSOR_LOCALS(size_t,  nb,  dst,  nb)
 
+#define GGML_TENSOR_BINARY_OP_LOCALS01 \
+    GGML_TENSOR_LOCALS(int64_t, ne0, src0, ne) \
+    GGML_TENSOR_LOCALS(size_t,  nb0, src0, nb) \
+    GGML_TENSOR_LOCALS(int64_t, ne1, src1, ne) \
+    GGML_TENSOR_LOCALS(size_t,  nb1, src1, nb)
+
 #ifdef  __cplusplus
 extern "C" {
 #endif
@@ -377,6 +383,9 @@ extern "C" {
         GGML_TYPE_F64     = 28,
         GGML_TYPE_IQ1_M   = 29,
         GGML_TYPE_BF16    = 30,
+        GGML_TYPE_Q4_0_4_4 = 31,
+        GGML_TYPE_Q4_0_4_8 = 32,
+        GGML_TYPE_Q4_0_8_8 = 33,
         GGML_TYPE_COUNT,
     };
 
@@ -418,6 +427,9 @@ extern "C" {
         GGML_FTYPE_MOSTLY_IQ4_XS  = 22, // except 1d tensors
         GGML_FTYPE_MOSTLY_IQ1_M   = 23, // except 1d tensors
         GGML_FTYPE_MOSTLY_BF16    = 24, // except 1d tensors
+        GGML_FTYPE_MOSTLY_Q4_0_4_4 = 25, // except 1d tensors
+        GGML_FTYPE_MOSTLY_Q4_0_4_8 = 26, // except 1d tensors
+        GGML_FTYPE_MOSTLY_Q4_0_8_8 = 27, // except 1d tensors
     };
 
     // available tensor operations:
@@ -481,9 +493,7 @@ extern "C" {
         GGML_OP_ARGSORT,
         GGML_OP_LEAKY_RELU,
 
-        GGML_OP_FLASH_ATTN,
         GGML_OP_FLASH_ATTN_EXT,
-        GGML_OP_FLASH_FF,
         GGML_OP_FLASH_ATTN_BACK,
         GGML_OP_SSM_CONV,
         GGML_OP_SSM_SCAN,
@@ -587,11 +597,7 @@ extern "C" {
         struct ggml_tensor * grad;
         struct ggml_tensor * src[GGML_MAX_SRC];
 
-        // performance
-        int     perf_runs;
-        int64_t perf_cycles;
-        int64_t perf_time_us;
-
+        // source tensor and offset for views
         struct ggml_tensor * view_src;
         size_t               view_offs;
 
@@ -601,7 +607,7 @@ extern "C" {
 
         void * extra; // extra things e.g. for ggml-cuda.cu
 
-        char padding[8];
+        // char padding[4];
     };
 
     static const size_t GGML_TENSOR_SIZE = sizeof(struct ggml_tensor);
@@ -648,11 +654,6 @@ extern "C" {
         struct ggml_hash_set visited_hash_table;
 
         enum ggml_cgraph_eval_order order;
-
-        // performance
-        int     perf_runs;
-        int64_t perf_cycles;
-        int64_t perf_time_us;
     };
 
     // scratch buffer
@@ -667,28 +668,6 @@ extern "C" {
         size_t mem_size;   // bytes
         void * mem_buffer; // if NULL, memory will be allocated internally
         bool   no_alloc;   // don't allocate memory for the tensor data
-    };
-
-
-    // compute types
-
-    // NOTE: the INIT or FINALIZE pass is not scheduled unless explicitly enabled.
-    // This behavior was changed since https://github.com/ggerganov/llama.cpp/pull/1995.
-    enum ggml_task_type {
-        GGML_TASK_TYPE_INIT = 0,
-        GGML_TASK_TYPE_COMPUTE,
-        GGML_TASK_TYPE_FINALIZE,
-    };
-
-    struct ggml_compute_params {
-        enum ggml_task_type type;
-
-        // ith = thread index, nth = number of threads
-        int ith, nth;
-
-        // work buffer for all threads
-        size_t wsize;
-        void * wdata;
     };
 
     // numa strategies
@@ -735,9 +714,9 @@ extern "C" {
     GGML_API GGML_CALL size_t  ggml_nbytes      (const struct ggml_tensor * tensor);
     GGML_API           size_t  ggml_nbytes_pad  (const struct ggml_tensor * tensor); // same as ggml_nbytes() but padded to GGML_MEM_ALIGN
 
-    GGML_API GGML_CALL int    ggml_blck_size(enum ggml_type type);
-    GGML_API GGML_CALL size_t ggml_type_size(enum ggml_type type);             // size in bytes for all elements in a block
-    GGML_API GGML_CALL size_t ggml_row_size (enum ggml_type type, int64_t ne); // size in bytes for all elements in a row
+    GGML_API GGML_CALL int64_t ggml_blck_size(enum ggml_type type);
+    GGML_API GGML_CALL size_t  ggml_type_size(enum ggml_type type);             // size in bytes for all elements in a block
+    GGML_API GGML_CALL size_t  ggml_row_size (enum ggml_type type, int64_t ne); // size in bytes for all elements in a row
 
     GGML_DEPRECATED(
     GGML_API double ggml_type_sizef(enum ggml_type type), // ggml_type_size()/ggml_blck_size() as float
@@ -758,7 +737,6 @@ extern "C" {
     GGML_API enum ggml_type ggml_ftype_to_ggml_type(enum ggml_ftype ftype);
 
     GGML_API GGML_CALL bool ggml_is_transposed(const struct ggml_tensor * tensor);
-    GGML_API GGML_CALL bool ggml_is_contiguous(const struct ggml_tensor * tensor);
     GGML_API GGML_CALL bool ggml_is_permuted  (const struct ggml_tensor * tensor);
     GGML_API GGML_CALL bool ggml_is_empty     (const struct ggml_tensor * tensor);
     GGML_API           bool ggml_is_scalar    (const struct ggml_tensor * tensor);
@@ -766,6 +744,11 @@ extern "C" {
     GGML_API           bool ggml_is_matrix    (const struct ggml_tensor * tensor);
     GGML_API           bool ggml_is_3d        (const struct ggml_tensor * tensor);
     GGML_API           int  ggml_n_dims       (const struct ggml_tensor * tensor); // returns 1 for scalars
+
+    GGML_API GGML_CALL bool ggml_is_contiguous  (const struct ggml_tensor * tensor);
+    GGML_API GGML_CALL bool ggml_is_contiguous_0(const struct ggml_tensor * tensor); // same as ggml_is_contiguous()
+    GGML_API GGML_CALL bool ggml_is_contiguous_1(const struct ggml_tensor * tensor); // contiguous for dims >= 1
+    GGML_API GGML_CALL bool ggml_is_contiguous_2(const struct ggml_tensor * tensor); // contiguous for dims >= 2
 
     GGML_API bool ggml_are_same_shape (const struct ggml_tensor * t0, const struct ggml_tensor * t1);
     GGML_API bool ggml_are_same_stride(const struct ggml_tensor * t0, const struct ggml_tensor * t1);
@@ -1009,12 +992,13 @@ extern "C" {
             struct ggml_tensor  * a,
             struct ggml_tensor  * b);
 
-    // concat a and b on dim 2
+    // concat a and b along dim
     // used in stable-diffusion
     GGML_API struct ggml_tensor * ggml_concat(
             struct ggml_context * ctx,
             struct ggml_tensor  * a,
-            struct ggml_tensor  * b);
+            struct ggml_tensor  * b,
+            int                   dim);
 
     GGML_API struct ggml_tensor * ggml_abs(
             struct ggml_context * ctx,
@@ -1460,9 +1444,8 @@ extern "C" {
             struct ggml_tensor  * b);
 
     // rotary position embedding
-    // if mode & 1 == 1, skip n_past elements (DEPRECATED)
+    // if mode & 1 == 1, skip n_past elements (NOT SUPPORTED)
     // if mode & 2 == 1, GPT-NeoX style
-    // if mode & 4 == 1, ChatGLM style
     //
     // b is an int32 vector with size a->ne[2], it contains the positions
     // c is freq factors (e.g. phi3-128k), (optional)
@@ -1471,8 +1454,7 @@ extern "C" {
             struct ggml_tensor  * a,
             struct ggml_tensor  * b,
             int                   n_dims,
-            int                   mode,
-            int                   n_ctx);
+            int                   mode);
 
     // in-place, returns view(a)
     GGML_API struct ggml_tensor * ggml_rope_inplace(
@@ -1480,8 +1462,7 @@ extern "C" {
             struct ggml_tensor  * a,
             struct ggml_tensor  * b,
             int                   n_dims,
-            int                   mode,
-            int                   n_ctx);
+            int                   mode);
 
     // custom RoPE
     GGML_API struct ggml_tensor * ggml_rope_ext(
@@ -1491,8 +1472,7 @@ extern "C" {
             struct ggml_tensor  * c,
             int                   n_dims,
             int                   mode,
-            int                   n_ctx,
-            int                   n_orig_ctx,
+            int                   n_ctx_orig,
             float                 freq_base,
             float                 freq_scale,
             float                 ext_factor,
@@ -1508,8 +1488,7 @@ extern "C" {
             struct ggml_tensor  * c,
             int                   n_dims,
             int                   mode,
-            int                   n_ctx,
-            int                   n_orig_ctx,
+            int                   n_ctx_orig,
             float                 freq_base,
             float                 freq_scale,
             float                 ext_factor,
@@ -1523,8 +1502,7 @@ extern "C" {
             struct ggml_tensor  * b,
             int                   n_dims,
             int                   mode,
-            int                   n_ctx,
-            int                   n_orig_ctx,
+            int                   n_ctx_orig,
             float                 freq_base,
             float                 freq_scale,
             float                 ext_factor,
@@ -1539,8 +1517,7 @@ extern "C" {
             struct ggml_tensor  * b,
             int                   n_dims,
             int                   mode,
-            int                   n_ctx,
-            int                   n_orig_ctx,
+            int                   n_ctx_orig,
             float                 freq_base,
             float                 freq_scale,
             float                 ext_factor,
@@ -1551,7 +1528,7 @@ extern "C" {
 
     // compute correction dims for YaRN RoPE scaling
     GGML_CALL void ggml_rope_yarn_corr_dims(
-        int n_dims, int n_orig_ctx, float freq_base, float beta_fast, float beta_slow, float dims[2]);
+        int n_dims, int n_ctx_orig, float freq_base, float beta_fast, float beta_slow, float dims[2]);
 
     // rotary position embedding backward, i.e compute dx from dy
     // a - dy
@@ -1562,16 +1539,13 @@ extern "C" {
             struct ggml_tensor  * c,
             int                   n_dims,
             int                   mode,
-            int                   n_ctx,
-            int                   n_orig_ctx,
+            int                   n_ctx_orig,
             float                 freq_base,
             float                 freq_scale,
             float                 ext_factor,
             float                 attn_factor,
             float                 beta_fast,
-            float                 beta_slow,
-            float                 xpos_base,
-            bool                  xpos_down);
+            float                 beta_slow);
 
     // clamp
     // in-place, returns view(a)
@@ -1761,13 +1735,6 @@ extern "C" {
             struct ggml_tensor  * a,
             int                   k);
 
-    GGML_API struct ggml_tensor * ggml_flash_attn(
-            struct ggml_context * ctx,
-            struct ggml_tensor  * q,
-            struct ggml_tensor  * k,
-            struct ggml_tensor  * v,
-            bool                  masked);
-
 #define GGML_KQ_MASK_PAD 32
 
     // q:    [n_embd, n_batch,     n_head,    1]
@@ -1788,6 +1755,7 @@ extern "C" {
             struct ggml_tensor * a,
             enum ggml_prec       prec);
 
+    // TODO: needs to be adapted to ggml_flash_attn_ext
     GGML_API struct ggml_tensor * ggml_flash_attn_back(
            struct ggml_context * ctx,
            struct ggml_tensor  * q,
@@ -1795,14 +1763,6 @@ extern "C" {
            struct ggml_tensor  * v,
            struct ggml_tensor  * d,
            bool                  masked);
-
-    GGML_API struct ggml_tensor * ggml_flash_ff(
-            struct ggml_context * ctx,
-            struct ggml_tensor  * a,
-            struct ggml_tensor  * b0,
-            struct ggml_tensor  * b1,
-            struct ggml_tensor  * c0,
-            struct ggml_tensor  * c1);
 
     GGML_API struct ggml_tensor * ggml_ssm_conv(
             struct ggml_context * ctx,
@@ -2420,6 +2380,7 @@ extern "C" {
     GGML_API int ggml_cpu_has_avx512_bf16(void);
     GGML_API int ggml_cpu_has_fma        (void);
     GGML_API int ggml_cpu_has_neon       (void);
+    GGML_API int ggml_cpu_has_sve        (void);
     GGML_API int ggml_cpu_has_arm_fma    (void);
     GGML_API int ggml_cpu_has_metal      (void);
     GGML_API int ggml_cpu_has_f16c       (void);
@@ -2427,13 +2388,13 @@ extern "C" {
     GGML_API int ggml_cpu_has_wasm_simd  (void);
     GGML_API int ggml_cpu_has_blas       (void);
     GGML_API int ggml_cpu_has_cuda       (void);
-    GGML_API int ggml_cpu_has_clblast    (void);
     GGML_API int ggml_cpu_has_vulkan     (void);
     GGML_API int ggml_cpu_has_kompute    (void);
     GGML_API int ggml_cpu_has_gpublas    (void);
     GGML_API int ggml_cpu_has_sse3       (void);
     GGML_API int ggml_cpu_has_ssse3      (void);
     GGML_API int ggml_cpu_has_sycl       (void);
+    GGML_API int ggml_cpu_has_rpc        (void);
     GGML_API int ggml_cpu_has_vsx        (void);
     GGML_API int ggml_cpu_has_matmul_int8(void);
 
@@ -2449,20 +2410,31 @@ extern "C" {
 #endif
     typedef void (*ggml_to_float_t)  (const void  * GGML_RESTRICT x, float * GGML_RESTRICT y, int64_t k);
     typedef void (*ggml_from_float_t)(const float * GGML_RESTRICT x, void  * GGML_RESTRICT y, int64_t k);
-    typedef void (*ggml_vec_dot_t)   (int n, float * GGML_RESTRICT s, size_t bs, const void * GGML_RESTRICT x, size_t bx,
-                                      const void * GGML_RESTRICT y, size_t by, int nrc);
+    typedef void (*ggml_from_float_to_mat_t)
+                                     (const float * GGML_RESTRICT x, void * GGML_RESTRICT y, int64_t nr, int64_t k, int64_t bs);
+    typedef void (*ggml_vec_dot_t)  (int n, float * GGML_RESTRICT s, size_t bs, const void * GGML_RESTRICT x, size_t bx,
+                                       const void * GGML_RESTRICT y, size_t by, int nrc);
+    typedef void (*ggml_gemv_t)     (int n, float * GGML_RESTRICT s, size_t bs, const void * GGML_RESTRICT x,
+                                       const void * GGML_RESTRICT y, int nr, int nc);
+    typedef void (*ggml_gemm_t)     (int n, float * GGML_RESTRICT s, size_t bs, const void * GGML_RESTRICT x,
+                                       const void * GGML_RESTRICT y, int nr, int nc);
 
     typedef struct {
-        const char      * type_name;
-        int               blck_size;
-        size_t            type_size;
-        bool              is_quantized;
-        ggml_to_float_t   to_float;
-        ggml_from_float_t from_float;
-        ggml_from_float_t from_float_reference;
-        ggml_vec_dot_t    vec_dot;
-        enum ggml_type    vec_dot_type;
-        int64_t           nrows; // number of rows to process simultaneously;
+        const char             * type_name;
+        int64_t                  blck_size;
+        int64_t                  blck_size_interleave; // interleave elements in blocks
+        size_t                   type_size;
+        bool                     is_quantized;
+        ggml_to_float_t          to_float;
+        ggml_from_float_t        from_float;
+        ggml_from_float_t        from_float_ref;
+        ggml_from_float_to_mat_t from_float_to_mat;
+        ggml_vec_dot_t           vec_dot;
+        enum ggml_type           vec_dot_type;
+        int64_t                  nrows; // number of rows to process simultaneously
+        int64_t                  ncols; // number of columns to process simultaneously
+        ggml_gemv_t              gemv;
+        ggml_gemm_t              gemm;
     } ggml_type_traits_t;
 
     GGML_API ggml_type_traits_t ggml_internal_get_type_traits(enum ggml_type type);
