@@ -8,9 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		2C09A62D2C731AD70084F08B /* llamaUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C09A62C2C731AD70084F08B /* llamaUIApp.swift */; };
-		2C09A62F2C731AD70084F08B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C09A62E2C731AD70084F08B /* ContentView.swift */; };
 		2C09A6312C731AD80084F08B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C09A6302C731AD80084F08B /* Assets.xcassets */; };
 		2C09A6342C731AD80084F08B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C09A6332C731AD80084F08B /* Preview Assets.xcassets */; };
+		2C09A63F2C7320820084F08B /* LlamaState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C09A6382C7320820084F08B /* LlamaState.swift */; };
+		2C09A6402C7320820084F08B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C09A6392C7320820084F08B /* ContentView.swift */; };
+		2C09A6412C7320820084F08B /* DownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C09A63A2C7320820084F08B /* DownloadButton.swift */; };
+		2C09A6422C7320820084F08B /* InputButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C09A63B2C7320820084F08B /* InputButton.swift */; };
+		2C09A6432C7320820084F08B /* LoadCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C09A63C2C7320820084F08B /* LoadCustomButton.swift */; };
+		2C09A6442C7320820084F08B /* LibLlama.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C09A63E2C7320820084F08B /* LibLlama.swift */; };
+		2C09A6562C7326EE0084F08B /* unicode-data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BCF562C00D21300A2C4DD /* unicode-data.cpp */; };
+		2C09A6582C7326EE0084F08B /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BCF552C00D21300A2C4DD /* unicode.cpp */; };
+		2C09A6592C7326EE0084F08B /* console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BCF522C00D19500A2C4DD /* console.cpp */; };
+		2C09A65B2C7326EE0084F08B /* build-info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF3262B392D84007F22EC /* build-info.cpp */; };
+		2C09A65E2C7326EE0084F08B /* grammar-parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF31D2B392611007F22EC /* grammar-parser.cpp */; };
+		2C09A6602C7326EF0084F08B /* sampling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF3152B3925E3007F22EC /* sampling.cpp */; };
+		2C09A6622C7326EF0084F08B /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF30E2B3925BA007F22EC /* common.cpp */; };
+		2C09A6642C7326EF0084F08B /* ggml-aarch64.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C15E9482C462C7D002A8ED8 /* ggml-aarch64.c */; };
+		2C09A6672C7326EF0084F08B /* ggml-backend.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF2FF2B39217D007F22EC /* ggml-backend.c */; };
+		2C09A66A2C7326EF0084F08B /* ggml-quants.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF3012B39217D007F22EC /* ggml-quants.c */; };
+		2C09A66C2C7326EF0084F08B /* ggml-alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B352A94B1CE006DAC8B /* ggml-alloc.c */; };
+		2C09A66F2C7326EF0084F08B /* ggml-metal.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B3D2A94B1CE006DAC8B /* ggml-metal.m */; };
+		2C09A6702C7326EF0084F08B /* ggml-metal.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B3C2A94B1CE006DAC8B /* ggml-metal.metal */; };
+		2C09A6712C7326EF0084F08B /* ggml.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B372A94B1CE006DAC8B /* ggml.c */; };
+		2C09A6732C7326EF0084F08B /* llama.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B392A94B1CE006DAC8B /* llama.cpp */; };
+		2C09A6762C7329430084F08B /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C09A6752C7329430084F08B /* Metal.framework */; };
+		2C09A6782C7329570084F08B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C09A6772C7329570084F08B /* Foundation.framework */; };
+		2C09A67A2C73295E0084F08B /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C09A6792C73295E0084F08B /* MetalKit.framework */; };
 		2C15E9492C462C7D002A8ED8 /* ggml-aarch64.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C15E9482C462C7D002A8ED8 /* ggml-aarch64.c */; };
 		2C4BF3052B39217D007F22EC /* ggml-backend.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF2FF2B39217D007F22EC /* ggml-backend.c */; };
 		2C4BF3062B39217D007F22EC /* ggml-backend.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF2FF2B39217D007F22EC /* ggml-backend.c */; };
@@ -72,9 +95,18 @@
 /* Begin PBXFileReference section */
 		2C09A62A2C731AD70084F08B /* llamaUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = llamaUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C09A62C2C731AD70084F08B /* llamaUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = llamaUIApp.swift; sourceTree = "<group>"; };
-		2C09A62E2C731AD70084F08B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2C09A6302C731AD80084F08B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C09A6332C731AD80084F08B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2C09A6382C7320820084F08B /* LlamaState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LlamaState.swift; sourceTree = "<group>"; };
+		2C09A6392C7320820084F08B /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2C09A63A2C7320820084F08B /* DownloadButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadButton.swift; sourceTree = "<group>"; };
+		2C09A63B2C7320820084F08B /* InputButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputButton.swift; sourceTree = "<group>"; };
+		2C09A63C2C7320820084F08B /* LoadCustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadCustomButton.swift; sourceTree = "<group>"; };
+		2C09A63E2C7320820084F08B /* LibLlama.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibLlama.swift; sourceTree = "<group>"; };
+		2C09A6752C7329430084F08B /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.5.sdk/System/Library/Frameworks/Metal.framework; sourceTree = DEVELOPER_DIR; };
+		2C09A6772C7329570084F08B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.5.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		2C09A6792C73295E0084F08B /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.5.sdk/System/Library/Frameworks/MetalKit.framework; sourceTree = DEVELOPER_DIR; };
+		2C09A67B2C732BE30084F08B /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		2C15E9472C462C7D002A8ED8 /* ggml-aarch64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ggml-aarch64.h"; sourceTree = "<group>"; };
 		2C15E9482C462C7D002A8ED8 /* ggml-aarch64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "ggml-aarch64.c"; sourceTree = "<group>"; };
 		2C4BF2FF2B39217D007F22EC /* ggml-backend.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "ggml-backend.c"; sourceTree = "<group>"; };
@@ -120,6 +152,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C09A67A2C73295E0084F08B /* MetalKit.framework in Frameworks */,
+				2C09A6782C7329570084F08B /* Foundation.framework in Frameworks */,
+				2C09A6762C7329430084F08B /* Metal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,8 +181,11 @@
 		2C09A62B2C731AD70084F08B /* llamaUI */ = {
 			isa = PBXGroup;
 			children = (
+				2C09A63D2C7320820084F08B /* UI */,
+				2C09A67B2C732BE30084F08B /* Bridging-Header.h */,
+				2C09A63E2C7320820084F08B /* LibLlama.swift */,
+				2C09A6382C7320820084F08B /* LlamaState.swift */,
 				2C09A62C2C731AD70084F08B /* llamaUIApp.swift */,
-				2C09A62E2C731AD70084F08B /* ContentView.swift */,
 				2C09A6302C731AD80084F08B /* Assets.xcassets */,
 				2C09A6322C731AD80084F08B /* Preview Content */,
 			);
@@ -160,6 +198,17 @@
 				2C09A6332C731AD80084F08B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2C09A63D2C7320820084F08B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				2C09A6392C7320820084F08B /* ContentView.swift */,
+				2C09A63A2C7320820084F08B /* DownloadButton.swift */,
+				2C09A63B2C7320820084F08B /* InputButton.swift */,
+				2C09A63C2C7320820084F08B /* LoadCustomButton.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		2C4BF30D2B3925BA007F22EC /* common */ = {
@@ -233,6 +282,9 @@
 		2C4C3B4E2A94B24C006DAC8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2C09A6792C73295E0084F08B /* MetalKit.framework */,
+				2C09A6772C7329570084F08B /* Foundation.framework */,
+				2C09A6752C7329430084F08B /* Metal.framework */,
 				2C4C3B532A94B359006DAC8B /* MetalKit.framework */,
 				2C4C3B512A94B342006DAC8B /* Foundation.framework */,
 				2C4C3B4F2A94B24C006DAC8B /* Metal.framework */,
@@ -392,8 +444,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C09A62F2C731AD70084F08B /* ContentView.swift in Sources */,
+				2C09A6562C7326EE0084F08B /* unicode-data.cpp in Sources */,
+				2C09A6582C7326EE0084F08B /* unicode.cpp in Sources */,
+				2C09A6592C7326EE0084F08B /* console.cpp in Sources */,
+				2C09A65B2C7326EE0084F08B /* build-info.cpp in Sources */,
+				2C09A65E2C7326EE0084F08B /* grammar-parser.cpp in Sources */,
+				2C09A6602C7326EF0084F08B /* sampling.cpp in Sources */,
+				2C09A6622C7326EF0084F08B /* common.cpp in Sources */,
+				2C09A6642C7326EF0084F08B /* ggml-aarch64.c in Sources */,
+				2C09A6672C7326EF0084F08B /* ggml-backend.c in Sources */,
+				2C09A66A2C7326EF0084F08B /* ggml-quants.c in Sources */,
+				2C09A66C2C7326EF0084F08B /* ggml-alloc.c in Sources */,
+				2C09A66F2C7326EF0084F08B /* ggml-metal.m in Sources */,
+				2C09A6702C7326EF0084F08B /* ggml-metal.metal in Sources */,
+				2C09A6712C7326EF0084F08B /* ggml.c in Sources */,
+				2C09A6732C7326EF0084F08B /* llama.cpp in Sources */,
 				2C09A62D2C731AD70084F08B /* llamaUIApp.swift in Sources */,
+				2C09A6422C7320820084F08B /* InputButton.swift in Sources */,
+				2C09A6442C7320820084F08B /* LibLlama.swift in Sources */,
+				2C09A6432C7320820084F08B /* LoadCustomButton.swift in Sources */,
+				2C09A63F2C7320820084F08B /* LlamaState.swift in Sources */,
+				2C09A6402C7320820084F08B /* ContentView.swift in Sources */,
+				2C09A6412C7320820084F08B /* DownloadButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +519,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"llamaUI/Preview Content\"";
@@ -454,12 +527,13 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -471,6 +545,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "llamaUI/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -483,6 +558,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"llamaUI/Preview Content\"";
@@ -490,12 +566,13 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -507,6 +584,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "llamaUI/Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

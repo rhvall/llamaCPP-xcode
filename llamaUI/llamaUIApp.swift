@@ -3,6 +3,7 @@
 //  llamaUI
 //
 //  Created by r on 19/8/2024.
+//  MIT license
 //
 
 import SwiftUI
