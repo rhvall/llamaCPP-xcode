@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C09A62D2C731AD70084F08B /* llamaUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C09A62C2C731AD70084F08B /* llamaUIApp.swift */; };
+		2C09A62F2C731AD70084F08B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C09A62E2C731AD70084F08B /* ContentView.swift */; };
+		2C09A6312C731AD80084F08B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C09A6302C731AD80084F08B /* Assets.xcassets */; };
+		2C09A6342C731AD80084F08B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C09A6332C731AD80084F08B /* Preview Assets.xcassets */; };
 		2C15E9492C462C7D002A8ED8 /* ggml-aarch64.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C15E9482C462C7D002A8ED8 /* ggml-aarch64.c */; };
 		2C4BF3052B39217D007F22EC /* ggml-backend.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF2FF2B39217D007F22EC /* ggml-backend.c */; };
 		2C4BF3062B39217D007F22EC /* ggml-backend.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4BF2FF2B39217D007F22EC /* ggml-backend.c */; };
@@ -66,6 +70,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2C09A62A2C731AD70084F08B /* llamaUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = llamaUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C09A62C2C731AD70084F08B /* llamaUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = llamaUIApp.swift; sourceTree = "<group>"; };
+		2C09A62E2C731AD70084F08B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2C09A6302C731AD80084F08B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2C09A6332C731AD80084F08B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2C15E9472C462C7D002A8ED8 /* ggml-aarch64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ggml-aarch64.h"; sourceTree = "<group>"; };
 		2C15E9482C462C7D002A8ED8 /* ggml-aarch64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "ggml-aarch64.c"; sourceTree = "<group>"; };
 		2C4BF2FF2B39217D007F22EC /* ggml-backend.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "ggml-backend.c"; sourceTree = "<group>"; };
@@ -107,6 +116,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2C09A6272C731AD70084F08B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2C4C3B262A94ADF6006DAC8B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -127,6 +143,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C09A62B2C731AD70084F08B /* llamaUI */ = {
+			isa = PBXGroup;
+			children = (
+				2C09A62C2C731AD70084F08B /* llamaUIApp.swift */,
+				2C09A62E2C731AD70084F08B /* ContentView.swift */,
+				2C09A6302C731AD80084F08B /* Assets.xcassets */,
+				2C09A6322C731AD80084F08B /* Preview Content */,
+			);
+			path = llamaUI;
+			sourceTree = "<group>";
+		};
+		2C09A6322C731AD80084F08B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2C09A6332C731AD80084F08B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		2C4BF30D2B3925BA007F22EC /* common */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +188,7 @@
 			children = (
 				2C4C3B2B2A94ADF6006DAC8B /* llmBridge */,
 				2C6C7B492A9F49F90013B5D9 /* llmBridgeFW */,
+				2C09A62B2C731AD70084F08B /* llamaUI */,
 				2C4C3B2A2A94ADF6006DAC8B /* Products */,
 				2C4C3B4E2A94B24C006DAC8B /* Frameworks */,
 			);
@@ -163,6 +199,7 @@
 			children = (
 				2C4C3B292A94ADF6006DAC8B /* llmBridge */,
 				2C6C7B482A9F49F90013B5D9 /* llmBridgeFW.framework */,
+				2C09A62A2C731AD70084F08B /* llamaUI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,6 +275,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		2C09A6292C731AD70084F08B /* llamaUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C09A6372C731AD80084F08B /* Build configuration list for PBXNativeTarget "llamaUI" */;
+			buildPhases = (
+				2C09A6262C731AD70084F08B /* Sources */,
+				2C09A6272C731AD70084F08B /* Frameworks */,
+				2C09A6282C731AD70084F08B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = llamaUI;
+			productName = llamaUI;
+			productReference = 2C09A62A2C731AD70084F08B /* llamaUI.app */;
+			productType = "com.apple.product-type.application";
+		};
 		2C4C3B282A94ADF6006DAC8B /* llmBridge */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C4C3B302A94ADF6006DAC8B /* Build configuration list for PBXNativeTarget "llmBridge" */;
@@ -280,8 +334,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					2C09A6292C731AD70084F08B = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					2C4C3B282A94ADF6006DAC8B = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -305,11 +363,21 @@
 			targets = (
 				2C4C3B282A94ADF6006DAC8B /* llmBridge */,
 				2C6C7B472A9F49F90013B5D9 /* llmBridgeFW */,
+				2C09A6292C731AD70084F08B /* llamaUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2C09A6282C731AD70084F08B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C09A6342C731AD80084F08B /* Preview Assets.xcassets in Resources */,
+				2C09A6312C731AD80084F08B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2C6C7B462A9F49F90013B5D9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -320,6 +388,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2C09A6262C731AD70084F08B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C09A62F2C731AD70084F08B /* ContentView.swift in Sources */,
+				2C09A62D2C731AD70084F08B /* llamaUIApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2C4C3B252A94ADF6006DAC8B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -364,6 +441,78 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		2C09A6352C731AD80084F08B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"llamaUI/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.llamaUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2C09A6362C731AD80084F08B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"llamaUI/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.llamaUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		2C4C3B2E2A94ADF6006DAC8B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -616,6 +765,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2C09A6372C731AD80084F08B /* Build configuration list for PBXNativeTarget "llamaUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C09A6352C731AD80084F08B /* Debug */,
+				2C09A6362C731AD80084F08B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2C4C3B242A94ADF6006DAC8B /* Build configuration list for PBXProject "llmBridge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
