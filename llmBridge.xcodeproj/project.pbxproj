@@ -42,9 +42,6 @@
 		2C5BCF572C00D21300A2C4DD /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BCF552C00D21300A2C4DD /* unicode.cpp */; };
 		2C5BCF582C00D21300A2C4DD /* unicode-data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BCF562C00D21300A2C4DD /* unicode-data.cpp */; };
 		2C6C7B4B2A9F49F90013B5D9 /* LLMBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C6C7B4A2A9F49F90013B5D9 /* LLMBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2C6C7B512A9F4AAA0013B5D9 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6C7B4F2A9F4AAA0013B5D9 /* Metal.framework */; };
-		2C6C7B522A9F4AAA0013B5D9 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6C7B502A9F4AAA0013B5D9 /* MetalKit.framework */; };
-		2C6C7B542A9F4AB10013B5D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6C7B532A9F4AB10013B5D9 /* Foundation.framework */; };
 		2C6C7B5B2A9F4F420013B5D9 /* ggml-alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B352A94B1CE006DAC8B /* ggml-alloc.c */; };
 		2C6C7B5E2A9F4F420013B5D9 /* ggml-metal.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B3D2A94B1CE006DAC8B /* ggml-metal.m */; };
 		2C6C7B5F2A9F4F420013B5D9 /* ggml-metal.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C3B3C2A94B1CE006DAC8B /* ggml-metal.metal */; };
@@ -107,9 +104,6 @@
 		2C5BCF562C00D21300A2C4DD /* unicode-data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "unicode-data.cpp"; sourceTree = "<group>"; };
 		2C6C7B482A9F49F90013B5D9 /* llmBridgeFW.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = llmBridgeFW.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6C7B4A2A9F49F90013B5D9 /* LLMBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLMBridge.h; sourceTree = "<group>"; };
-		2C6C7B4F2A9F4AAA0013B5D9 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.2.sdk/System/Library/Frameworks/Metal.framework; sourceTree = DEVELOPER_DIR; };
-		2C6C7B502A9F4AAA0013B5D9 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.2.sdk/System/Library/Frameworks/MetalKit.framework; sourceTree = DEVELOPER_DIR; };
-		2C6C7B532A9F4AB10013B5D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,9 +121,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C6C7B542A9F4AB10013B5D9 /* Foundation.framework in Frameworks */,
-				2C6C7B512A9F4AAA0013B5D9 /* Metal.framework in Frameworks */,
-				2C6C7B522A9F4AAA0013B5D9 /* MetalKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,10 +196,7 @@
 		2C4C3B4E2A94B24C006DAC8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2C6C7B532A9F4AB10013B5D9 /* Foundation.framework */,
 				2C4C3B532A94B359006DAC8B /* MetalKit.framework */,
-				2C6C7B4F2A9F4AAA0013B5D9 /* Metal.framework */,
-				2C6C7B502A9F4AAA0013B5D9 /* MetalKit.framework */,
 				2C4C3B512A94B342006DAC8B /* Foundation.framework */,
 				2C4C3B4F2A94B24C006DAC8B /* Metal.framework */,
 			);
