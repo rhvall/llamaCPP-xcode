@@ -7,6 +7,7 @@
 //  Original code: https://github.com/ggerganov/llama.cpp/tree/master/examples/llama.swiftui
 //
 
+import UIKit
 import SwiftUI
 
 struct ContentView: View {
