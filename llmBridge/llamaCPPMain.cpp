@@ -319,10 +319,10 @@ int main(int argc, char ** argv) {
         LOG("guidance_offset:     %s", log_tostr(guidance_offset));
     }
 
-    if ((int) embd_inp.size() > n_ctx - 4) {
-        LOG_TEE("%s: error: prompt is too long (%d tokens, max %d)\n", __func__, (int) embd_inp.size(), n_ctx - 4);
-        return 1;
-    }
+//    if ((int) embd_inp.size() > n_ctx - 4) {
+//        LOG_TEE("%s: error: prompt is too long (%d tokens, max %d)\n", __func__, (int) embd_inp.size(), n_ctx - 4);
+//        return 1;
+//    }
 
     // debug message about similarity of saved session, if applicable
     size_t n_matching_session_tokens = 0;
@@ -467,8 +467,8 @@ int main(int argc, char ** argv) {
     // number of grouped KV tokens so far (used only if params.grp_attn_n > 1)
     int ga_i = 0;
 
-    const int ga_n = params.grp_attn_n; //2;
-    const int ga_w = params.grp_attn_w; //512;
+    const int ga_n = 2; //params.grp_attn_n; //2;
+    const int ga_w = 256; //params.grp_attn_w; //512;
 
     if (ga_n != 1) {
         GGML_ASSERT(ga_n > 0                    && "grp_attn_n must be positive");                     // NOLINT
@@ -585,25 +585,46 @@ int main(int argc, char ** argv) {
                     const int n_left    = n_past - params.n_keep;
                     const int n_discard = n_left/2;
 
-                    LOG("context full, swapping: n_past = %d, n_left = %d, n_ctx = %d, n_keep = %d, n_discard = %d\n",
+                    printf("context full, swapping: n_past = %d, n_left = %d, n_ctx = %d, n_keep = %d, n_discard = %d\n",
                             n_past, n_left, n_ctx, params.n_keep, n_discard);
+                    
+                    int count = llama_get_kv_cache_token_count(ctx);
+                    printf("Pre Cache Token count: %d\n", count);
+                    
 
-                    llama_kv_cache_seq_rm (ctx, 0, params.n_keep            , params.n_keep + n_discard);
+                    llama_kv_cache_seq_rm(ctx, 0, params.n_keep, params.n_keep + n_discard);
+                    
+                    count = llama_get_kv_cache_token_count(ctx);
+                    printf("RM Cache Token count: %d\n", count);
+                    
                     llama_kv_cache_seq_add(ctx, 0, params.n_keep + n_discard, n_past, -n_discard);
-
+                    
+                    count = llama_get_kv_cache_token_count(ctx);
+                    printf("Add Cache Token count: %d\n", count);
+                    
+                    llama_kv_cache_update(ctx);
+                    count = llama_get_kv_cache_token_count(ctx);
+                    printf("Update Cache Token count: %d\n", count);
+                    
                     n_past -= n_discard;
 
                     if (ctx_guidance) {
                         n_past_guidance -= n_discard;
                     }
 
-                    LOG("after swap: n_past = %d, n_past_guidance = %d\n", n_past, n_past_guidance);
+                    printf("after swap: n_past = %d, n_past_guidance = %d\n", n_past, n_past_guidance);
 
-                    LOG("embd: %s\n", LOG_TOKENS_TOSTR_PRETTY(ctx, embd).c_str());
-
+//                    printf("embd: %s\n", LOG_TOKENS_TOSTR_PRETTY(ctx, embd).c_str());
+                    count = llama_get_kv_cache_token_count(ctx);
+                    printf("Pre Cache Token count: %d\n",count);
                     LOG("clear session path\n");
                     path_session.clear();
                 }
+                // else
+                // {
+                //     int count = llama_get_kv_cache_token_count(ctx);
+                //     printf("KVValues: %d\n", count);
+                // }
             } else {
                 // context extension via Self-Extend
                 while (n_past >= ga_i + ga_w) {
@@ -611,10 +632,10 @@ int main(int argc, char ** argv) {
                     const int bd = (ga_w/ga_n)*(ga_n - 1);
                     const int dd = (ga_w/ga_n) - ib*bd - ga_w;
 
-                    LOG("\n");
-                    LOG("shift: [%6d, %6d] + %6d -> [%6d, %6d]\n", ga_i, n_past, ib*bd, ga_i + ib*bd, n_past + ib*bd);
-                    LOG("div:   [%6d, %6d] / %6d -> [%6d, %6d]\n", ga_i + ib*bd, ga_i + ib*bd + ga_w, ga_n, (ga_i + ib*bd)/ga_n, (ga_i + ib*bd + ga_w)/ga_n);
-                    LOG("shift: [%6d, %6d] + %6d -> [%6d, %6d]\n", ga_i + ib*bd + ga_w, n_past + ib*bd, dd, ga_i + ib*bd + ga_w + dd, n_past + ib*bd + dd);
+                    printf("\n");
+                    printf("shift: [%6d, %6d] + %6d -> [%6d, %6d]\n", ga_i, n_past, ib*bd, ga_i + ib*bd, n_past + ib*bd);
+                    printf("div:   [%6d, %6d] / %6d -> [%6d, %6d]\n", ga_i + ib*bd, ga_i + ib*bd + ga_w, ga_n, (ga_i + ib*bd)/ga_n, (ga_i + ib*bd + ga_w)/ga_n);
+                    printf("shift: [%6d, %6d] + %6d -> [%6d, %6d]\n", ga_i + ib*bd + ga_w, n_past + ib*bd, dd, ga_i + ib*bd + ga_w + dd, n_past + ib*bd + dd);
 
                     llama_kv_cache_seq_add(ctx, 0, ga_i,                n_past,              ib*bd);
                     llama_kv_cache_seq_div(ctx, 0, ga_i + ib*bd,        ga_i + ib*bd + ga_w, ga_n);
@@ -624,7 +645,7 @@ int main(int argc, char ** argv) {
 
                     ga_i += ga_w/ga_n;
 
-                    LOG("\nn_past_old = %d, n_past = %d, ga_i = %d\n\n", n_past + bd, n_past, ga_i);
+                    printf("\nn_past_old = %d, n_past = %d, ga_i = %d\n\n", n_past + bd, n_past, ga_i);
                 }
             }
 
@@ -681,6 +702,7 @@ int main(int argc, char ** argv) {
 
                 for (int i = 0; i < input_size; i += params.n_batch) {
                     int n_eval = std::min(input_size - i, params.n_batch);
+                    printf("\nBefore Decode0: n_past = %d, n_eval = %d, pastGuidance: %d\n", n_past, n_eval, n_past_guidance);
                     if (llama_decode(ctx_guidance, llama_batch_get_one(input_buf + i, n_eval, n_past_guidance, 0))) {
                         LOG_TEE("%s : failed to eval\n", __func__);
                         return 1;
@@ -697,7 +719,7 @@ int main(int argc, char ** argv) {
                 }
 
                 LOG("eval: %s\n", LOG_TOKENS_TOSTR_PRETTY(ctx, embd).c_str());
-
+                printf("\nBefore Decode1: n_past = %d, n_eval = %d\n", n_past, n_eval);
                 if (llama_decode(ctx, llama_batch_get_one(&embd[i], n_eval, n_past, 0))) {
                     LOG_TEE("%s : failed to eval\n", __func__);
                     return 1;
